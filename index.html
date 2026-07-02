@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep-plum: #241335;
+    --twilight: #3b2255;
+    --violet: #5e3f82;
+    --lavender: #cbb3ec;
+    --lavender-soft: #e6d9f7;
+    --mauve: #9b7ebd;
+    --gold: #eac888;
+    --ivory: #f7f2fb;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: linear-gradient(180deg, #1a0f2b 0%, #2c1a44 45%, #3d2657 100%);
+    color: var(--ivory);
+    font-family: 'Lora', serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ---------- Scene ---------- */
+  .scene{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 6vh 5vw 10vh;
+    overflow: hidden;
+  }
+
+  .sky-glow{
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140vw;
+    height: 70vh;
+    background: radial-gradient(ellipse at center, rgba(203,179,236,0.25) 0%, rgba(203,179,236,0.08) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .stars{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .star{
+    position: absolute;
+    background: var(--ivory);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%, 100%{ opacity: 0.25; }
+    50%{ opacity: 0.9; }
+  }
+
+  .moon{
+    position: absolute;
+    top: 6%;
+    right: 10%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff9ec, var(--gold) 70%);
+    box-shadow: 0 0 60px 12px rgba(234,200,136,0.45);
+    z-index: 1;
+  }
+
+  /* ---------- Mountains ---------- */
+  .mountains{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 46vh;
+    min-height: 260px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .mtn-layer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 220%;
+    height: 100%;
+  }
+  .mtn-back{ animation: driftLeft 70s linear infinite; opacity: 0.55; }
+  .mtn-mid{  animation: driftRight 50s linear infinite; opacity: 0.75; }
+  .mtn-front{ animation: driftLeft 34s linear infinite; opacity: 0.95; }
+
+  @keyframes driftLeft{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+  @keyframes driftRight{
+    from{ transform: translateX(-50%); }
+    to{ transform: translateX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .mtn-back, .mtn-mid, .mtn-front, .star{ animation: none; }
+  }
+
+  /* ---------- Content ---------- */
+  .content{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2.2rem;
+  }
+
+  .eyebrow{
+    font-family: 'Italiana', serif;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--mauve);
+    margin-bottom: -0.6rem;
+  }
+
+  h1.headline{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 1.05;
+    margin: 0;
+    color: var(--ivory);
+    text-shadow: 0 0 40px rgba(203,179,236,0.35);
+  }
+  h1.headline em{
+    font-style: italic;
+    color: var(--lavender);
+  }
+
+  .subline{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--lavender-soft);
+    letter-spacing: 0.04em;
+    margin-top: -1rem;
+  }
+
+  /* ---------- Note Card ---------- */
+  .card{
+    width: 100%;
+    background: rgba(247, 242, 251, 0.06);
+    border: 1px solid rgba(203,179,236,0.25);
+    border-radius: 18px;
+    padding: 2rem 2rem 1.6rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.5);
+    text-align: left;
+  }
+
+  .card-label{
+    font-family: 'Italiana', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.9rem;
+    text-align: center;
+  }
+
+  textarea.note{
+    width: 100%;
+    min-height: 150px;
+    resize: vertical;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--ivory);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    font-style: italic;
+    text-align: center;
+    padding: 0.4rem 0.2rem;
+  }
+  textarea.note::placeholder{
+    color: rgba(230, 217, 247, 0.45);
+  }
+
+  .signature{
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--mauve);
+    margin-top: 0.6rem;
+  }
+
+  /* ---------- Scripture Card ---------- */
+  .verse-card{
+    width: 100%;
+    background: linear-gradient(180deg, rgba(94,63,130,0.35), rgba(36,19,53,0.4));
+    border: 1px solid rgba(234,200,136,0.3);
+    border-radius: 18px;
+    padding: 2.2rem 2rem;
+    text-align: left;
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.5);
+  }
+
+  .verse-header{
+    text-align: center;
+    margin-bottom: 1.4rem;
+  }
+  .verse-header .ref{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.1rem;
+    color: var(--gold);
+    display: block;
+  }
+  .verse-header .tag{
+    font-family: 'Italiana', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--lavender);
+    opacity: 0.8;
+  }
+
+  .verse-toggle{
+    display: block;
+    margin: 0 auto 1.2rem;
+    background: transparent;
+    border: 1px solid rgba(234,200,136,0.45);
+    color: var(--gold);
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 0.55rem 1.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .verse-toggle:hover{
+    background: rgba(234,200,136,0.15);
+  }
+
+  .verse-body{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+  .verse-body.open{
+    max-height: 3000px;
+  }
+
+  .verse-body p{
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--lavender-soft);
+    margin: 0 0 0.9rem;
+  }
+  .verse-body sup{
+    color: var(--gold);
+    font-size: 0.7rem;
+    margin-right: 0.35rem;
+    font-weight: 600;
+  }
+
+  footer{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem 1rem 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--mauve);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px){
+    .scene{ padding: 5vh 5vw 8vh; }
+    .card, .verse-card{ padding: 1.5rem 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <div class="sky-glow"></div>
+  <div class="stars" id="stars"></div>
+  <div class="moon"></div>
+
+  <div class="content">
+    <span class="eyebrow">A Day For You</span>
+    <h1 class="headline">Happy Birthday<br><em>Mom!</em></h1>
+    <p class="subline">Every mountain we've crossed, you led the way.</p>
+
+    <div class="card">
+      <span class="card-label">A Little Note For You</span>
+      <textarea class="note" placeholder="Write your birthday note here..."></textarea>
+    </div>
+
+    <div class="verse-card">
+      <div class="verse-header">
+        <span class="tag">Your Chapter This Year</span>
+        <span class="ref">John 14</span>
+      </div>
+      <button class="verse-toggle" id="toggleBtn">Read the Chapter</button>
+      <div class="verse-body" id="verseBody">
+        <p><sup>1</sup>Let not your heart be troubled: ye believe in God, believe also in me.</p>
+        <p><sup>2</sup>In my Father's house are many mansions: if it were not so, I would have told you. I go to prepare a place for you.</p>
+        <p><sup>3</sup>And if I go and prepare a place for you, I will come again, and receive you unto myself; that where I am, there ye may be also.</p>
+        <p><sup>4</sup>And whither I go ye know, and the way ye know.</p>
+        <p><sup>5</sup>Thomas saith unto him, Lord, we know not whither thou goest; and how can we know the way?</p>
+        <p><sup>6</sup>Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me.</p>
+        <p><sup>7</sup>If ye had known me, ye should have known my Father also: and from henceforth ye know him, and have seen him.</p>
+        <p><sup>8</sup>Philip saith unto him, Lord, shew us the Father, and it sufficeth us.</p>
+        <p><sup>9</sup>Jesus saith unto him, Have I been so long time with you, and yet hast thou not known me, Philip? he that hath seen me hath seen the Father; and how sayest thou then, Shew us the Father?</p>
+        <p><sup>10</sup>Believest thou not that I am in the Father, and the Father in me? the words that I speak unto you I speak not of myself: but the Father that dwelleth in me, he doeth the works.</p>
+        <p><sup>11</sup>Believe me that I am in the Father, and the Father in me: or else believe me for the very works' sake.</p>
+        <p><sup>12</sup>Verily, verily, I say unto you, He that believeth on me, the works that I do shall he do also; and greater works than these shall he do; because I go unto my Father.</p>
+        <p><sup>13</sup>And whatsoever ye shall ask in my name, that will I do, that the Father may be glorified in the Son.</p>
+        <p><sup>14</sup>If ye shall ask any thing in my name, I will do it.</p>
+        <p><sup>15</sup>If ye love me, keep my commandments.</p>
+        <p><sup>16</sup>And I will pray the Father, and he shall give you another Comforter, that he may abide with you for ever;</p>
+        <p><sup>17</sup>Even the Spirit of truth; whom the world cannot receive, because it seeth him not, neither knoweth him: but ye know him; for he dwelleth with you, and shall be in you.</p>
+        <p><sup>18</sup>I will not leave you comfortless: I will come to you.</p>
+        <p><sup>19</sup>Yet a little while, and the world seeth me no more; but ye see me: because I live, ye shall live also.</p>
+        <p><sup>20</sup>At that day ye shall know that I am in my Father, and ye in me, and I in you.</p>
+        <p><sup>21</sup>He that hath my commandments, and keepeth them, he it is that loveth me: and he that loveth me shall be loved of my Father, and I will love him, and will manifest myself to him.</p>
+        <p><sup>22</sup>Judas saith unto him, not Iscariot, Lord, how is it that thou wilt manifest thyself unto us, and not unto the world?</p>
+        <p><sup>23</sup>Jesus answered and said unto him, If a man love me, he will keep my words: and my Father will love him, and we will come unto him, and make our abode with him.</p>
+        <p><sup>24</sup>He that loveth me not keepeth not my sayings: and the word which ye hear is not mine, but the Father's which sent me.</p>
+        <p><sup>25</sup>These things have I spoken unto you, being yet present with you.</p>
+        <p><sup>26</sup>But the Comforter, which is the Holy Ghost, whom the Father will send in my name, he shall teach you all things, and bring all things to your remembrance, whatsoever I have said unto you.</p>
+        <p><sup>27</sup>Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid.</p>
+        <p><sup>28</sup>Ye have heard how I said unto you, I go away, and come again unto you. If ye loved me, ye would rejoice, because I said, I go unto the Father: for my Father is greater than I.</p>
+        <p><sup>29</sup>And now I have told you before it come to pass, that, when it is come to pass, ye might believe.</p>
+        <p><sup>30</sup>Hereafter I will not talk much with you: for the prince of this world cometh, and hath nothing in me.</p>
+        <p><sup>31</sup>But that the world may know that I love the Father; and as the Father gave me commandment, even so I do. Arise, let us go hence.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mountains">
+    <svg class="mtn-layer mtn-back" viewBox="0 0 1600 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,400 0,220 150,120 300,240 480,90 650,230 820,140 1000,260 1180,110 1350,220 1600,150 1600,400" fill="#4a3268"/>
+      <polygon points="1600,400 1600,150 1750,220 1900,110 2080,260 2260,140 2430,230 2600,90 2780,240 2930,120 3080,220 3080,400" fill="#4a3268"/>
+    </svg>
+    <svg class="mtn-layer mtn-mid" viewBox="0 0 1600 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,400 0,260 180,150 340,270 520,130 700,280 880,170 1050,290 1230,150 1420,260 1600,180 1600,400" fill="#3a2456"/>
+      <polygon points="1600,400 1600,180 1780,260 1950,150 2130,290 2300,170 2480,280 2660,130 2840,270 3000,150 3180,260 3180,400" fill="#3a2456"/>
+    </svg>
+    <svg class="mtn-layer mtn-front" viewBox="0 0 1600 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,400 0,300 200,190 380,310 560,170 760,320 940,200 1120,330 1320,190 1500,300 1600,240 1600,400" fill="#241335"/>
+      <polygon points="1600,400 1600,240 1800,300 1980,190 2160,330 2340,200 2540,320 2720,170 2900,310 3080,190 3280,300 3280,400" fill="#241335"/>
+    </svg>
+  </div>
+</div>
+
+<footer>With all my love, today and always.</footer>
+
+<script>
+  // Scatter stars
+  const starField = document.getElementById('stars');
+  const starCount = 60;
+  for(let i=0;i<starCount;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random()*2 + 1;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = Math.random()*100 + '%';
+    s.style.top = Math.random()*55 + '%';
+    s.style.animationDelay = (Math.random()*4) + 's';
+    starField.appendChild(s);
+  }
+
+  // Toggle scripture
+  const btn = document.getElementById('toggleBtn');
+  const body = document.getElementById('verseBody');
+  btn.addEventListener('click', () => {
+    const isOpen = body.classList.toggle('open');
+    btn.textContent = isOpen ? 'Close the Chapter' : 'Read the Chapter';
+  });
+</script>
+
+</body>
+</html>
