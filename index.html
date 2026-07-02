@@ -9,14 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Italiana&display=swap" rel="stylesheet">
 <style>
   :root{
-    --deep-plum: #241335;
-    --twilight: #3b2255;
-    --violet: #5e3f82;
-    --lavender: #cbb3ec;
-    --lavender-soft: #e6d9f7;
-    --mauve: #9b7ebd;
-    --gold: #eac888;
-    --ivory: #f7f2fb;
+    --deep-plum: #4a2f72;
+    --twilight: #6b4a96;
+    --violet: #8265b0;
+    --lavender: #c8aee8;
+    --lavender-soft: #f3ecfb;
+    --mauve: #9678bb;
+    --gold: #d8a24e;
+    --ivory: #3a2456;
+    --card-bg: rgba(255, 255, 255, 0.55);
+    --card-border: rgba(140, 100, 180, 0.25);
   }
 
   *{ box-sizing: border-box; }
@@ -25,7 +27,7 @@
 
   body{
     margin: 0;
-    background: linear-gradient(180deg, #1a0f2b 0%, #2c1a44 45%, #3d2657 100%);
+    background: linear-gradient(180deg, #f6effc 0%, #ecdff9 40%, #ddc7f2 75%, #cdb0ea 100%);
     color: var(--ivory);
     font-family: 'Lora', serif;
     overflow-x: hidden;
@@ -51,7 +53,7 @@
     transform: translateX(-50%);
     width: 140vw;
     height: 70vh;
-    background: radial-gradient(ellipse at center, rgba(203,179,236,0.25) 0%, rgba(203,179,236,0.08) 40%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.2) 40%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -64,14 +66,15 @@
   }
   .star{
     position: absolute;
-    background: var(--ivory);
+    background: #ffffff;
     border-radius: 50%;
-    opacity: 0.7;
+    opacity: 0.55;
     animation: twinkle 4s ease-in-out infinite;
+    box-shadow: 0 0 6px 1px rgba(255,255,255,0.6);
   }
   @keyframes twinkle{
-    0%, 100%{ opacity: 0.25; }
-    50%{ opacity: 0.9; }
+    0%, 100%{ opacity: 0.2; }
+    50%{ opacity: 0.75; }
   }
 
   .moon{
@@ -81,8 +84,8 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #fff9ec, var(--gold) 70%);
-    box-shadow: 0 0 60px 12px rgba(234,200,136,0.45);
+    background: radial-gradient(circle at 35% 35%, #fffdf6, var(--gold) 75%);
+    box-shadow: 0 0 50px 14px rgba(216,162,78,0.35);
     z-index: 1;
   }
 
@@ -139,7 +142,7 @@
     letter-spacing: 0.35em;
     text-transform: uppercase;
     font-size: 0.72rem;
-    color: var(--mauve);
+    color: var(--twilight);
     margin-bottom: -0.6rem;
   }
 
@@ -149,18 +152,18 @@
     font-size: clamp(2.6rem, 7vw, 5rem);
     line-height: 1.05;
     margin: 0;
-    color: var(--ivory);
-    text-shadow: 0 0 40px rgba(203,179,236,0.35);
+    color: var(--deep-plum);
+    text-shadow: 0 0 40px rgba(255,255,255,0.5);
   }
   h1.headline em{
     font-style: italic;
-    color: var(--lavender);
+    color: var(--twilight);
   }
 
   .subline{
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.15rem;
-    color: var(--lavender-soft);
+    color: var(--mauve);
     letter-spacing: 0.04em;
     margin-top: -1rem;
   }
@@ -168,13 +171,13 @@
   /* ---------- Note Card ---------- */
   .card{
     width: 100%;
-    background: rgba(247, 242, 251, 0.06);
-    border: 1px solid rgba(203,179,236,0.25);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 18px;
     padding: 2rem 2rem 1.6rem;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px -22px rgba(90,60,130,0.35);
     text-align: left;
   }
 
@@ -205,7 +208,7 @@
     padding: 0.4rem 0.2rem;
   }
   textarea.note::placeholder{
-    color: rgba(230, 217, 247, 0.45);
+    color: rgba(74, 47, 114, 0.4);
   }
 
   .signature{
@@ -219,12 +222,14 @@
   /* ---------- Scripture Card ---------- */
   .verse-card{
     width: 100%;
-    background: linear-gradient(180deg, rgba(94,63,130,0.35), rgba(36,19,53,0.4));
-    border: 1px solid rgba(234,200,136,0.3);
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(233,215,250,0.5));
+    border: 1px solid rgba(216,162,78,0.35);
     border-radius: 18px;
     padding: 2.2rem 2rem;
     text-align: left;
-    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px -22px rgba(90,60,130,0.35);
   }
 
   .verse-header{
@@ -234,7 +239,7 @@
   .verse-header .ref{
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.1rem;
-    color: var(--gold);
+    color: var(--deep-plum);
     display: block;
   }
   .verse-header .tag{
@@ -242,16 +247,16 @@
     font-size: 0.68rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--lavender);
-    opacity: 0.8;
+    color: var(--gold);
+    opacity: 0.9;
   }
 
   .verse-toggle{
     display: block;
     margin: 0 auto 1.2rem;
     background: transparent;
-    border: 1px solid rgba(234,200,136,0.45);
-    color: var(--gold);
+    border: 1px solid rgba(216,162,78,0.6);
+    color: #a86f1e;
     font-family: 'Lora', serif;
     font-size: 0.85rem;
     letter-spacing: 0.05em;
@@ -261,7 +266,7 @@
     transition: background 0.25s ease, color 0.25s ease;
   }
   .verse-toggle:hover{
-    background: rgba(234,200,136,0.15);
+    background: rgba(216,162,78,0.15);
   }
 
   .verse-body{
@@ -277,11 +282,11 @@
     font-family: 'Lora', serif;
     font-size: 1rem;
     line-height: 1.85;
-    color: var(--lavender-soft);
+    color: var(--ivory);
     margin: 0 0 0.9rem;
   }
   .verse-body sup{
-    color: var(--gold);
+    color: #a86f1e;
     font-size: 0.7rem;
     margin-right: 0.35rem;
     font-weight: 600;
@@ -365,16 +370,16 @@
 
   <div class="mountains">
     <svg class="mtn-layer mtn-back" viewBox="0 0 1600 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="0,400 0,220 150,120 300,240 480,90 650,230 820,140 1000,260 1180,110 1350,220 1600,150 1600,400" fill="#4a3268"/>
-      <polygon points="1600,400 1600,150 1750,220 1900,110 2080,260 2260,140 2430,230 2600,90 2780,240 2930,120 3080,220 3080,400" fill="#4a3268"/>
+      <polygon points="0,400 0,220 150,120 300,240 480,90 650,230 820,140 1000,260 1180,110 1350,220 1600,150 1600,400" fill="#cbb0e6"/>
+      <polygon points="1600,400 1600,150 1750,220 1900,110 2080,260 2260,140 2430,230 2600,90 2780,240 2930,120 3080,220 3080,400" fill="#cbb0e6"/>
     </svg>
     <svg class="mtn-layer mtn-mid" viewBox="0 0 1600 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="0,400 0,260 180,150 340,270 520,130 700,280 880,170 1050,290 1230,150 1420,260 1600,180 1600,400" fill="#3a2456"/>
-      <polygon points="1600,400 1600,180 1780,260 1950,150 2130,290 2300,170 2480,280 2660,130 2840,270 3000,150 3180,260 3180,400" fill="#3a2456"/>
+      <polygon points="0,400 0,260 180,150 340,270 520,130 700,280 880,170 1050,290 1230,150 1420,260 1600,180 1600,400" fill="#a985d1"/>
+      <polygon points="1600,400 1600,180 1780,260 1950,150 2130,290 2300,170 2480,280 2660,130 2840,270 3000,150 3180,260 3180,400" fill="#a985d1"/>
     </svg>
     <svg class="mtn-layer mtn-front" viewBox="0 0 1600 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="0,400 0,300 200,190 380,310 560,170 760,320 940,200 1120,330 1320,190 1500,300 1600,240 1600,400" fill="#241335"/>
-      <polygon points="1600,400 1600,240 1800,300 1980,190 2160,330 2340,200 2540,320 2720,170 2900,310 3080,190 3280,300 3280,400" fill="#241335"/>
+      <polygon points="0,400 0,300 200,190 380,310 560,170 760,320 940,200 1120,330 1320,190 1500,300 1600,240 1600,400" fill="#7852ac"/>
+      <polygon points="1600,400 1600,240 1800,300 1980,190 2160,330 2340,200 2540,320 2720,170 2900,310 3080,190 3280,300 3280,400" fill="#7852ac"/>
     </svg>
   </div>
 </div>
